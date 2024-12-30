@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Tacgia extends Model
+{
+    protected $table = 'tacgia';
+
+    protected $primaryKey = 'matacgia';
+
+    public function sach() 
+    { 
+        return $this->hasMany(Sach::class, 'matacgia'); 
+    }
+}

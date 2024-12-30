@@ -1,0 +1,49 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+.footer {
+    background-color: #0063af;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer-section {
+    background-color: #f8f9fa; 
+    padding: 40px 0;
+    border-top: 2px solid #ddd; 
+}
+.footer-column {
+    margin-bottom: 30px;
+}
+.footer-column h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.footer-column a {
+    color: #007bff; 
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+.footer-column a:hover {
+    text-decoration: underline;
+}
+.social-icons {
+    display: flex;
+    justify-content: left; 
+    gap: 20px; 
+    text-decoration: none;
+}
+.social-icons a {
+    font-size: 30px; 
+    color: #333;       
+}
+.social-icons a:hover {
+    color: #007bff; 
+    text-decoration: none;
+}

@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+header h1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.container h2, .container h3, .container h4 {
+    color: #0063af;
+}
+.container p, ul {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+.image-container {
+    text-align: center;
+    margin: 20px 0;
+}
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+.highlight {
+    font-weight: bold;
+    color: #e74c3c;
+}
+.highlight-phone {
+    color: #e74c3c; /* Tô đỏ số điện thoại */
+    font-weight: bold;
+}
+.footer {
+    background-color: #0063af;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    margin-top: 20px;
+}
+.step {
+    margin-bottom: 10px;
+}
+.icon {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.icon i {
+    font-size: 30px;
+    color: #3498db;
+    margin-right: 15px;
+}
+.highlight {
+    color: red;
+    font-weight: bold;
+}
