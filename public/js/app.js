@@ -35,6 +35,32 @@ document.querySelectorAll('.btn-prev, .btn-next').forEach(button => {
     });
 });
 
+// Tự động chạy slide
+function autoSlide() {
+    document.querySelectorAll('.slider-track').forEach(sliderTrack => {
+        const slides = sliderTrack.querySelectorAll('.book-item');
+        const totalSlides = slides.length;
+        const slideWidth = slides[0].offsetWidth + 15; 
+        let currentSlide = parseInt(sliderTrack.getAttribute('data-current-slide'), 10) || 0;
+
+        const visibleSlides = 5; 
+        const maxSlideIndex = totalSlides - visibleSlides;
+
+        currentSlide++;
+        if (currentSlide > maxSlideIndex) {
+            currentSlide = 0; 
+        }
+
+        sliderTrack.setAttribute('data-current-slide', currentSlide);
+        const offset = -(currentSlide * slideWidth);
+        sliderTrack.style.transform = `translateX(${offset}px)`;
+    });
+}
+
+// Thiết lập khoảng thời gian để slide tự động chạy (3 giây)
+setInterval(autoSlide, 3000);
+
+
 //Button trở về đầu trang
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -58,55 +84,69 @@ function filterByPublisher(publisherId) {
 
 //Xử lý api địa chỉ
 $(document).ready(function() {
-    $('#province').on('change', function() {
+    async function fetchData(url) {
+        try {
+            let response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            let data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return null;
+        }
+    }
+
+    $('#province').on('change', async function() {
         var province_id = $(this).val();
         console.log("Province ID selected: " + province_id); 
 
+        var prefix = 'auth'; // hoặc 'checkout' tuỳ điều kiện của bạn
+
         if (province_id) {
-            fetch(`/fetch-districts?province_id=${province_id}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data); 
+            let data = await fetchData(`/${prefix}/fetch-districts?province_id=${province_id}`);
+            if (data) {
+                console.log(data); 
+                $('#district').empty();
+                $('#district').append('<option value="">Chọn Quận/Huyện</option>');
 
-                    $('#district').empty();
-                    $('#district').append('<option value="">Chọn Quận/Huyện</option>');
+                data.forEach(district => {
+                    $('#district').append(new Option(district.name, district.id));
+                });
 
-                    data.forEach(district => {
-                        $('#district').append(new Option(district.name, district.id));
-                    });
-
-                    $('#wards').empty();
-                    $('#wards').html('<option value="">Chọn Phường/Xã</option>');
-                })
-                .catch(error => console.error('Error fetching districts:', error));
+                $('#wards').empty();
+                $('#wards').html('<option value="">Chọn Phường/Xã</option>');
+            }
         } else {
             $('#district').empty().append('<option value="">Chọn Quận/Huyện</option>');
             $('#wards').empty().append('<option value="">Chọn Phường/Xã</option>');
         }
     });
 
-    $('#district').on('change', function() {
+    $('#district').on('change', async function() {
         var district_id = $(this).val();
+        var prefix = 'auth'; // hoặc 'checkout' tuỳ điều kiện của bạn
 
         if (district_id) {
-            fetch(`/fetch-wards?district_id=${district_id}`)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data); 
+            let data = await fetchData(`/${prefix}/fetch-wards?district_id=${district_id}`);
+            if (data) {
+                console.log(data); 
 
-                    $('#wards').empty();
-                    $('#wards').append('<option value="">Chọn Phường/Xã</option>');
+                $('#wards').empty();
+                $('#wards').append('<option value="">Chọn Phường/Xã</option>');
 
-                    data.forEach(ward => {
-                        $('#wards').append(new Option(ward.name, ward.id));
-                    });
-                })
-                .catch(error => console.error('Error fetching wards:', error));
+                data.forEach(ward => {
+                    $('#wards').append(new Option(ward.name, ward.id));
+                });
+            }
         } else {
             $('#wards').empty().append('<option value="">Chọn Phường/Xã</option>');
         }
     });
 });
+
+
 
 //
 function focusTab(tabId) {

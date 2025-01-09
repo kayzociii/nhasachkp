@@ -28,8 +28,8 @@
         <div class="dropdown">
             <span class="dropbtn">Xin chào, {{ Auth::user()->khachHang->hoten }}<i class="fas fa-caret-down"></i></span>
             <div class="dropdown-content">
-            <a href="thongtinkhachhang.php">Tài khoản của tôi</a>
-            <a href="donhang.php">Đơn hàng của tôi</a>
+            <a href="{{ route('account.edit') }}">Tài khoản của tôi</a>
+            <a href="{{ route('orders.show') }}">Đơn hàng của tôi</a>
             <a href="{{ route('dang-xuat') }}" 
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Đăng xuất</a>
                 <form id="logout-form" method="POST" action="{{ route('dang-xuat') }}" style="display: none;">
@@ -239,25 +239,26 @@
     <div class="pagi">
     <!-- Liên kết Trang trước -->
     @if ($books->currentPage() > 1)
-        <a href="{{ $books->previousPageUrl() }}&search={{ urlencode($search_term) }}&machude={{ $machude }}" class="page-item">&#171;</a>
+        <a href="{{ $books->previousPageUrl() }}&search={{ urlencode($search_term) }}&machude={{ $machude }}&max_price={{ request('max_price') }}&author_id={{ request('author_id') }}&publisher_id={{ request('publisher_id') }}&sort_by={{ request('sort_by') }}" class="page-item">&#171;</a>
     @else
         <a href="#" class="page-item disabled">&#171;</a>
     @endif
 
     <!-- Các số trang -->
     @foreach ($books->getUrlRange(1, $books->lastPage()) as $page => $url)
-        <a href="{{ $url }}&search={{ urlencode($search_term) }}&machude={{ $machude }}" class="page-item {{ $page == $books->currentPage() ? 'active' : '' }}">
+        <a href="{{ $url }}&search={{ urlencode($search_term) }}&machude={{ $machude }}&max_price={{ request('max_price') }}&author_id={{ request('author_id') }}&publisher_id={{ request('publisher_id') }}&sort_by={{ request('sort_by') }}" class="page-item {{ $page == $books->currentPage() ? 'active' : '' }}">
             {{ $page }}
         </a>
     @endforeach
 
     <!-- Liên kết Trang sau -->
     @if ($books->hasMorePages())
-        <a href="{{ $books->nextPageUrl() }}&search={{ urlencode($search_term) }}&machude={{ $machude }}" class="page-item">&#187;</a>
+        <a href="{{ $books->nextPageUrl() }}&search={{ urlencode($search_term) }}&machude={{ $machude }}&max_price={{ request('max_price') }}&author_id={{ request('author_id') }}&publisher_id={{ request('publisher_id') }}&sort_by={{ request('sort_by') }}" class="page-item">&#187;</a>
     @else
         <a href="#" class="page-item disabled">&#187;</a>
     @endif
     </div>
+
 
     <div class="container my-4">
     <!-- Mục Sách Gợi Ý Đọc -->
@@ -311,6 +312,7 @@
         </div>
     </div>
 
+    @if (!$is_hidden)
     <div class="container my-4">
     <!-- Mục Logo Nhà Xuất Bản -->
     <div class="publisher-logos mt-4">
@@ -430,7 +432,7 @@
         </div>
     </div>
     </div>
-
+    @endif
     <!-- nút backtotop -->
     <button class="backToTop" onclick="scrollToTop()">
         <i class="fa-solid fa-angles-up"></i>

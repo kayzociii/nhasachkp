@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.breadcrumb {
+    padding: 0;
+    background-color: transparent;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    padding: 0 5px;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+    font-size: 18px;
+}
+
+.breadcrumb-item.active a {
+    color: #6c757d;
+    font-size: 18px;
+}
+
+/* CSS cho phần chi tiết đơn hàng */
+table {
+    width: 85%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+th, td {
+    padding: 18px;
+    text-align: center !important; /* Căn giữa nội dung trong tất cả các cột */
+    border-bottom: 2px solid #ddd;
+}
+
+th {
+    background: linear-gradient(135deg, #6c7ae0, #f9b7b7);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9;
+    font-size: 1rem;
+}
+
+/* Căn giữa ảnh sách */
+td img.product-image {
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+td img.product-image:hover {
+    transform: scale(1.05);
+}
+
+.back-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #3498db;
+    border-radius: 30px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(52, 152, 219, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 50px !important;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    color: white;
+}
+
+.back-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    .back-button {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+}

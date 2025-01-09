@@ -71,11 +71,11 @@
                 </div>
                 <div class="summary-row">
                     <span class="label">Giao tiết kiệm:</span>
-                    <span class="value">{{ number_format(30000, 0, ',', '.') }}đ</span>
+                    <span class="value">{{ number_format(29000, 0, ',', '.') }}đ</span>
                 </div>
                 <div class="summary-row">
                     <span class="label">Tổng cộng:</span>
-                    <span class="value">{{ number_format($totalAmount + 30000, 0, ',', '.') }}đ</span>
+                    <span class="value">{{ number_format($totalAmount + 29000, 0, ',', '.') }}đ</span>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
             <div class="checkout-buttons">
                 <a href="{{ route('welcome') }}" class="checkout-button">Tiếp tục mua hàng</a>
                 <a href="{{ route('cart.clear') }}" class="checkout-button clear-cart-button">Xóa giỏ hàng</a>
-                <a href="{{ route('welcome') }}" class="checkout-button">Thanh toán</a>
+                <a href="{{ route('checkout.form') }}" class="checkout-button">Thanh toán</a>
             </div>
         </div>
     @else

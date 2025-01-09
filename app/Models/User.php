@@ -22,4 +22,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(KhachHang::class, 'makhachhang');
     }
+
+    public function hoadons() 
+    { 
+        return $this->hasMany(HoaDon::class, 'makhachhang');
+    }
 }

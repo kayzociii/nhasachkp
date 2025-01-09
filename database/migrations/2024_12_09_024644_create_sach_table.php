@@ -18,7 +18,8 @@ return new class extends Migration
             $table->decimal('giasach');
             $table->string('anhbia');
             $table->integer('soluongton');
-            $table->dateTime('ngaycapnhat');
+            $table->date('ngaycapnhat');
+            $table->string('barcode');
             $table->foreignId('machude')->constrained('chude');
             $table->timestamps();
         });

@@ -10,6 +10,25 @@ class Sach extends Model
 
     protected $primaryKey = 'masach';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'tensach',
+        'giasach',
+        'mota',
+        'soluongton',
+        'anhbia', 
+        'ngaycapnhat',
+        'barcode',
+        'machude',
+        'matacgia',
+        'manhaxuatban',
+    ];
+
+    protected $casts = [
+        'ngaycapnhat' => 'date',
+    ];
+
     public function chude()
     {
         return $this->belongsTo(Chude::class, 'machude');

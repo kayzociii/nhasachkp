@@ -12,7 +12,7 @@
     <div class="header">
         <div class="container">
             <div class="logo">
-                <img src="images/logo.png">
+                <img src="../images/logo.png">
                 <a href="{{ route('welcome') }}">
                     <span class="logo-text">Nhà Sách KP</span>
                 </a>

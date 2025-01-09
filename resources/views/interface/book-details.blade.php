@@ -18,7 +18,7 @@
         </nav>
     </div>
     <h1 class="book-titleru">{{ $book->tensach }}</h1>
-    <h6 style="text-align: right; margin-right: 20%;">Barcode:</h6>
+    <h6 style="text-align: right; margin-right: 10%;">Barcode: {{ $book->barcode }}</h6>
 
     <div class="book-info-container">
         <!-- Hình ảnh sách -->

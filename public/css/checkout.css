@@ -1,0 +1,308 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.checkout-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    color: #007bff !important;
+    font-weight: bold;
+    font-size: 24px; /* Make the font size bigger */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.card-header .circle-number {
+    background-color: #fff;
+    color: #007bff; /* Màu xanh biển cho số 1 */
+    border-radius: 50%; /* Làm cho số 1 có hình tròn */
+    border: 1px solid #343a40;;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px; /* Khoảng cách giữa số và chữ */
+    font-size: 16px; /* Kích thước chữ số 1 */
+    font-weight: bold;
+}
+
+.checkout-form{
+    padding-top: 10px;
+}
+.sticky-form {
+    margin-top: 20px !important;
+    position: sticky !important;
+    top: 20px !important;  /* Đảm bảo phần tử sticky "dính" khi cuộn */
+    padding-left: 20px;
+    z-index: 10 !important; /* Đảm bảo sticky luôn hiển thị trên các phần tử khác */
+}
+.sticky-form .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+}
+.sticky-form .card-header {
+    font-size: 20px !important;  /* Phóng to chữ "Đơn hàng" */
+    font-weight: bold !important;  /* In đậm chữ "Đơn hàng" */
+}
+.sticky-form .card-body .total {
+    border-top: 1px solid  #6c757d !important;  /* Đường kẻ phía trên */
+    margin-top: 10px !important; 
+    padding-top: 10px !important;
+}
+
+.sticky-form .card-body .total span {
+    font-size: 20px !important;  /* Phóng to số tiền */
+    font-weight: bold !important;  /* In đậm số tiền */
+}
+
+
+.sticky-form .card-body p {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 10px !important; 
+}
+
+.sticky-form .card-body p .label {
+    text-align: left !important;  /* Căn chỉnh chữ bên trái */
+}
+
+.sticky-form .card-body p .value {
+    text-align: right !important;  /* Căn chỉnh giá trị (số tiền) phía phải */
+}
+
+
+.checkout-btn {
+    background-color: #f57224;
+    color: #fff;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #e55500;
+}
+
+.cart-summary table img {
+    width: 50px;
+    border-radius: 4px;
+}
+
+.breadcrumb {
+    padding: 0;
+    background-color: transparent;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    padding: 0 5px;
+    color: #6c757d;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+    font-size: 18px;
+}
+
+.breadcrumb-item.active a {
+    color: #6c757d;
+    font-size: 18px;
+}
+
+.cart-summary table th,
+.cart-summary table td {
+    vertical-align: middle;
+}
+
+.cart-summary .total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: right;
+}
+ .shipping-container {
+border: 2px solid #007bff; /* Viền màu xanh biển */
+padding: 20px;
+border-radius: 10px;
+color: #333;
+margin-bottom: 10px;
+}
+
+.shipping-container p,
+.shipping-container ul {
+margin: 10px 0;
+}
+
+.shipping-container strong {
+font-size: 18px;
+}
+
+.shipping-container ul {
+padding-left: 20px;
+}
+
+.fast-shipping-container {
+border: 2px solid #007bff; /* Viền màu xanh biển */
+padding: 20px;
+border-radius: 10px;
+color: #333;
+margin-bottom: 20px;
+}
+
+.fast-shipping-container p,
+.fast-shipping-container ul {
+margin: 10px 0;
+}
+
+.fast-shipping-container strong {
+font-size: 18px;
+}
+
+.fast-shipping-container ul {
+padding-left: 20px;
+}
+.shipping-title {
+border-bottom: 2px solid #007bff;
+padding: 5px 10px;  /* Thêm khoảng cách bên trong */
+border-radius: 5px;  /* Bo góc cho viền */
+display: inline-block;  /* Đảm bảo tiêu đề không chiếm toàn bộ chiều rộng */
+color: black;  /* Màu chữ xanh */
+box-sizing: border-box;  /* Đảm bảo viền không ảnh hưởng đến chiều rộng */   
+
+}
+/* Điều chỉnh để radio button nằm ở góc phải */
+.shipping-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Căn chỉnh và phóng to radio button */
+.shipping-title input[type="radio"] {
+    transform: scale(2); /* Phóng to nút radio */
+    margin-left: 10px; /* Khoảng cách giữa các radio */
+}
+
+/* Tăng cường thẩm mỹ cho danh sách */
+ul {
+    margin-left: 20px;
+}
+
+ul li {
+    list-style-type: none;
+}
+/* Phần ghi chú */
+.note-container {
+    margin-top: 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+label[for="customer-note"] {
+    font-size: 22px; /* Tăng kích thước chữ "Ghi chú" */
+    
+}
+ .payment-method {
+    border: 2px solid transparent; /* Không viền mặc định */
+    padding: 10px;
+    border-radius: 8px; /* Góc bo tròn */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    margin-bottom: 20px; /* Khoảng cách giữa các phương thức */
+}
+
+.payment-method:hover {
+    cursor: pointer;
+}
+
+.payment-method.selected {
+    border-color: #007bff; /* Viền xanh nhạt khi được chọn */
+    background-color: #e7f1ff; /* Nền xanh nhạt khi được chọn */
+}
+
+.payment-icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.payment-details {
+    flex-grow: 1;
+}
+
+.payment-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.payment-description {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.payment-method input[type="radio"] {
+    margin-left: auto; 
+    transform: scale(1.5); 
+}
+
+#qrCodeContainer {
+    display: none; 
+    margin-top: 20px;
+    text-align: center;
+}
+
+#qrCodeContainer img {
+    width: 400px;
+    height: 400px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: vertical; 
+}
+
+textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#submitForm {
+    width: 27%;
+    padding-top: 20px;
+}

@@ -10,7 +10,7 @@ class KhachHang extends Model
     protected $primaryKey = 'makhachhang';
     public $timestamps = false;
 
-    protected $fillable = ['hoten'];
+    protected $fillable = ['hoten', 'diachi', 'sodienthoai'];
 
     public function user()
     {

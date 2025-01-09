@@ -11,6 +11,7 @@ use App\Models\Wards;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use App\Mail\VerificationMail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -49,7 +50,7 @@ class AuthController extends Controller
             if ($user->quyen == 'khachhang') {
                 return redirect()->route('welcome')->with('success', 'Xin chào, ' . $user->khachhang->hoten);
             } elseif ($user->quyen == 'admin') {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.books.index');
             } else {
                 Auth::logout();
                 return back()->with('roleerror', 'Bạn không có quyền truy cập.');
@@ -224,5 +225,84 @@ class AuthController extends Controller
             ]);
     
         return redirect()->route('dang-nhap')->with('success', 'Mật khẩu đã được cập nhật thành công!');
+    }
+
+    public function edit()
+    {
+        if (!Auth::check()) {
+            return redirect('dang-nhap');
+        }
+
+        $user_id = Auth::id();
+        $user = DB::table('user')
+            ->join('khachhang', 'user.makhachhang', '=', 'khachhang.makhachhang')
+            ->where('user.mauser', $user_id)
+            ->first();
+
+        if (!$user) {
+            return response('Không tìm thấy thông tin tài khoản.', 404);
+        }
+
+        return view('account.edit', compact('user'));
+    }
+
+    public function update(Request $request)
+    {
+        if (!Auth::check()) {
+            return redirect('dang-nhap');
+        }
+
+        $user_id = Auth::id();
+        $user = DB::table('user')
+            ->join('khachhang', 'user.makhachhang', '=', 'khachhang.makhachhang')
+            ->where('user.mauser', $user_id)
+            ->first();
+
+        if (!$user) {
+            return response('Không tìm thấy thông tin tài khoản.', 404);
+        }
+
+        $alert_shown = false;
+
+        if ($request->isMethod('post')) {
+            $new_password = $request->input('new_password');
+            $confirm_password = $request->input('confirm_password');
+            $current_password = $user->password;
+
+            if ($new_password) {
+                if (Hash::check($new_password, $current_password)) {
+                    session()->flash('error', 'Mật khẩu mới không được trùng với mật khẩu hiện tại!');
+                    $alert_shown = true;
+                } elseif ($new_password === $confirm_password) {
+                    DB::table('user')
+                        ->where('makhachhang', $user->makhachhang)
+                        ->update(['password' => Hash::make($new_password)]);
+
+                    Auth::logout();
+                    return redirect('dang-nhap')->with('success', 'Cập nhật mật khẩu thành công! Vui lòng đăng nhập lại.');
+                } else {
+                    session()->flash('error', 'Mật khẩu xác nhận không khớp!');
+                    $alert_shown = true;
+                }
+            }
+
+            if (!$alert_shown) {
+                $hoten = $request->input('hoten');
+                $diachi = $request->input('diachi');
+                $sodienthoai = $request->input('sodienthoai');
+
+                DB::table('khachhang')
+                    ->where('makhachhang', $user->makhachhang)
+                    ->update([
+                        'hoten' => $hoten,
+                        'diachi' => $diachi,
+                        'sodienthoai' => $sodienthoai,
+                    ]);
+
+                return redirect('account')->with('success', 'Cập nhật thông tin thành công!');
+            }
+        }
+
+        return view('account.login', compact('user'));
     }
 }
