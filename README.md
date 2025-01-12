@@ -76,10 +76,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 For any inquiries, please contact:
-- **Email**: your-email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: kayzociii@gmail.com
+- **GitHub**: https://github.com/kayzociii
 
----
 
-Thank you for using our Bookstore Management System!
 
