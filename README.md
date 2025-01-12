@@ -1,4 +1,12 @@
 # Bookstore Website
+- **Frontend**: 
+   - HTML ![HTML5 Badge](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat&logo=html5&logoColor=white)
+   - CSS ![CSS3 Badge](https://img.shields.io/badge/CSS3-%231572B6.svg?style=flat&logo=css3&logoColor=white)
+   - JavaScript ![JavaScript Badge](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=flat&logo=javascript&logoColor=black)
+- **Backend**: 
+   - PHP Laravel ![PHP Badge](https://img.shields.io/badge/PHP-%23777BB4.svg?style=flat&logo=php&logoColor=white) ![Laravel Badge](https://img.shields.io/badge/Laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white)
+- **Database**: 
+   - MySQL ![MySQL Badge](https://img.shields.io/badge/MySQL-%2300A4DB.svg?style=flat&logo=mysql&logoColor=white)
 
 ## Overview
 This project is a comprehensive **Bookstore Management System** designed to provide a seamless experience for both customers and administrators. The system allows customers to shop online efficiently and assists administrators in managing inventory and customer data effectively.
